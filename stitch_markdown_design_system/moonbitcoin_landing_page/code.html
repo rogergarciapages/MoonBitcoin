@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@700;900&amp;family=Work+Sans:wght@400&amp;family=Geist:wght@600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed-dim": "#c8c6c5",
+                    "chart-grid-dark": "rgba(255,255,255,0.08)",
+                    "light-gray-surface": "#F5F5F5",
+                    "border-light": "rgba(0,0,0,0.08)",
+                    "secondary": "#c8c6c6",
+                    "surface-tint": "#f9bd12",
+                    "surface-container-low": "#1b1b1b",
+                    "inverse-surface": "#e2e2e2",
+                    "secondary-container": "#474747",
+                    "error-container": "#93000a",
+                    "tertiary-container": "#cecccb",
+                    "surface-dark": "#242424",
+                    "on-secondary-fixed": "#1b1c1c",
+                    "on-tertiary-container": "#575656",
+                    "tertiary-fixed": "#e4e2e1",
+                    "on-primary": "#3f2e00",
+                    "primary-fixed-dim": "#f9bd12",
+                    "pure-black": "#000000",
+                    "on-background": "#e2e2e2",
+                    "surface-variant": "#353535",
+                    "inverse-primary": "#785a00",
+                    "inverse-on-surface": "#303030",
+                    "on-tertiary-fixed-variant": "#474746",
+                    "surface-container-high": "#2a2a2a",
+                    "surface": "#131313",
+                    "on-surface": "#e2e2e2",
+                    "on-secondary-container": "#b6b5b4",
+                    "primary": "#ffe5b4",
+                    "on-tertiary": "#303030",
+                    "on-primary-fixed-variant": "#5b4300",
+                    "chart-grid-light": "rgba(0,0,0,0.06)",
+                    "surface-container-lowest": "#0e0e0e",
+                    "primary-container": "#ffc31c",
+                    "border-dark": "rgba(255,255,255,0.10)",
+                    "on-secondary-fixed-variant": "#474747",
+                    "secondary-fixed-dim": "#c8c6c6",
+                    "background": "#131313",
+                    "surface-elevated": "#474747",
+                    "on-error": "#690005",
+                    "surface-bright": "#393939",
+                    "on-surface-variant": "#d3c5ac",
+                    "on-tertiary-fixed": "#1b1c1c",
+                    "pure-white": "#FFFFFF",
+                    "outline-variant": "#4f4633",
+                    "on-secondary": "#303030",
+                    "tertiary": "#ebe8e7",
+                    "surface-container-highest": "#353535",
+                    "on-primary-container": "#6e5200",
+                    "surface-container": "#1f1f1f",
+                    "secondary-fixed": "#e4e2e2",
+                    "surface-dim": "#131313",
+                    "bitcoin-gold": "#FFC31C",
+                    "error": "#ffb4ab",
+                    "outline": "#9c8f78",
+                    "primary-fixed": "#ffdf9d",
+                    "on-error-container": "#ffdad6",
+                    "on-primary-fixed": "#251a00"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "card-padding": "2rem",
+                    "gutter": "1.5rem",
+                    "section-gap": "8rem",
+                    "container-max": "1280px",
+                    "hero-padding-y": "10rem"
+            },
+            "fontFamily": {
+                    "hero-title-mobile": ["Hanken Grotesk"],
+                    "section-title": ["Hanken Grotesk"],
+                    "section-title-mobile": ["Hanken Grotesk"],
+                    "kpi-value": ["Geist"],
+                    "hero-title": ["Hanken Grotesk"],
+                    "body-base": ["Work Sans"]
+            },
+            "fontSize": {
+                    "hero-title-mobile": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "900"}],
+                    "section-title": ["36px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "section-title-mobile": ["24px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "kpi-value": ["24px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "hero-title": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.05em", "fontWeight": "900"}],
+                    "body-base": ["16px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-pure-black text-on-surface font-body-base overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl dark:bg-surface/80 border-b border-border-dark">
+<div class="flex justify-between items-center px-gutter py-4 max-w-container-max mx-auto">
+<div class="font-hero-title-mobile text-section-title-mobile text-on-surface tracking-tighter">
+                MoonBitcoin
+            </div>
+<div class="hidden md:flex space-x-8">
+<a class="text-bitcoin-gold border-b-2 border-bitcoin-gold pb-1 font-body-base text-body-base transition-all duration-300 ease-in-out" href="#">Analytics</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-body-base text-body-base" href="#">Ecosystem</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-body-base text-body-base" href="#">Reports</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-body-base text-body-base" href="#">Governance</a>
+</div>
+<button class="bg-bitcoin-gold text-on-primary font-bold px-6 py-2 rounded-xl transition-all duration-300 hover:opacity-80">
+                Launch App
+            </button>
+</div>
+</nav>
+<main>
+<!-- Hero Section -->
+<section class="relative min-h-screen flex items-center pt-hero-padding-y pb-20 overflow-hidden">
+<!-- Subtle Golden Glow -->
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-4xl opacity-20 pointer-events-none" style="background: radial-gradient(circle at top, #FFC31C 0%, transparent 70%);"></div>
+<div class="max-w-container-max mx-auto px-gutter w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+<!-- Left: Content -->
+<div class="lg:col-span-6 flex flex-col items-start space-y-8">
+<h1 class="font-hero-title text-hero-title-mobile md:text-hero-title text-on-surface tracking-tighter max-w-xl">
+                        Bitcoin &amp; The <span class="text-bitcoin-gold">Lunar Cycle</span>
+</h1>
+<p class="text-on-surface-variant text-body-base max-w-lg leading-relaxed">
+                        An intellectually honest data-analysis experiment exploring the correlation between Bitcoin market behavior and lunar phases. We translate celestial patterns into institutional-grade financial telemetry.
+                    </p>
+<div class="flex flex-wrap gap-4 pt-4">
+<button class="bg-bitcoin-gold text-on-primary font-bold px-8 py-4 rounded-xl text-lg hover:brightness-110 transition-all duration-300">
+                            Launch App
+                        </button>
+<button class="bg-transparent border-2 border-border-dark text-on-surface font-bold px-8 py-4 rounded-xl text-lg hover:bg-surface-variant/20 transition-all duration-300">
+                            Explore Data
+                        </button>
+</div>
+</div>
+<!-- Right: Cinematic Chart Visualization -->
+<div class="lg:col-span-6 relative h-[500px] w-full bg-surface-container-low rounded-[24px] border border-border-dark overflow-hidden flex items-center justify-center">
+<div class="absolute inset-0 bg-gradient-to-b from-bitcoin-gold/5 to-transparent"></div>
+<!-- Decorative Chart Elements -->
+<div class="relative w-full h-full p-8 flex flex-col justify-end">
+<div class="absolute inset-x-8 top-12 flex justify-between items-center text-xs font-mono text-on-surface-variant opacity-40 uppercase tracking-widest">
+<span>Volatility Index</span>
+<span class="text-bitcoin-gold">Synodic Cycle Active</span>
+</div>
+<!-- Main Line Visualization (Mock Illustration) -->
+<div class="relative w-full h-2/3">
+<svg class="w-full h-full" viewbox="0 0 400 200">
+<defs>
+<lineargradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#FFC31C" stop-opacity="0.2"></stop>
+<stop offset="100%" stop-color="#FFC31C" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<path d="M0,150 Q50,140 80,160 T140,100 T220,120 T300,40 T400,60 L400,200 L0,200 Z" fill="url(#chartGradient)"></path>
+<path class="filter drop-shadow-[0_0_8px_rgba(255,195,28,0.5)]" d="M0,150 Q50,140 80,160 T140,100 T220,120 T300,40 T400,60" fill="none" stroke="#FFC31C" stroke-linecap="round" stroke-width="3"></path>
+<!-- Moon Phase Markers -->
+<circle class="animate-pulse" cx="140" cy="100" fill="white" fill-opacity="0.9" r="10"></circle>
+<circle cx="300" cy="40" fill="none" r="10" stroke="white" stroke-width="2"></circle>
+</svg>
+<!-- Floating Phase Icons -->
+<div class="absolute top-1/4 left-1/3 flex flex-col items-center">
+<span class="material-symbols-outlined text-pure-white text-xl" style="font-variation-settings: 'FILL' 1;">brightness_high</span>
+<span class="text-[10px] text-on-surface mt-1 uppercase font-bold tracking-tighter">Full Moon</span>
+</div>
+<div class="absolute bottom-1/4 right-1/4 flex flex-col items-center">
+<span class="material-symbols-outlined text-on-surface-variant text-xl">brightness_4</span>
+<span class="text-[10px] text-on-surface-variant mt-1 uppercase font-bold tracking-tighter">New Moon</span>
+</div>
+</div>
+</div>
+<img class="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-overlay pointer-events-none" data-alt="A cinematic high-resolution visual of a glowing Bitcoin cryptocurrency coin floating in a dark, atmospheric space with subtle lunar surface textures in the background. The lighting is focused and dramatic, featuring golden rim lighting that highlights the intricate circuitry of the coin. The composition creates a sense of cosmic financial precision and advanced digital data analytics, utilizing deep blacks and vibrant golden hues." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsnvPWzEzq6VKCBWLsNT4rYCGsIzTNAjUM31u8hfnFKnof-khVrStRYN5x-8lq4Z5NLHHPLiyjoW3la3NZlstFIjqdt7ddBiHhhcERrcqmHp8jAoi5wpreusht_W2_6U7Eu5f_nqfv_qBKfsOqLs_mqofQwFw-vPonRz0dVEqdGOX8nkAkHZb1yb3ZhNvLyPDI_A7bIhl40ey6wcoEh-sO3HtvRI7QJ-Rt8LG9ibzfb5Qj7wcw4K8tltcMkItsxU_CHH8bhkmqxkw"/>
+</div>
+</div>
+</section>
+<!-- KPI Section -->
+<section class="py-20 bg-surface-container-lowest border-y border-border-dark">
+<div class="max-w-container-max mx-auto px-gutter">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- KPI 1 -->
+<div class="p-card-padding bg-surface-container rounded-[24px] border border-border-dark group hover:border-bitcoin-gold/50 transition-all duration-300">
+<p class="text-on-surface-variant text-sm uppercase tracking-widest mb-4">Best Performing Phase</p>
+<div class="flex items-baseline space-x-2">
+<h3 class="font-kpi-value text-hero-title-mobile text-bitcoin-gold">Waxing Gibbous</h3>
+</div>
+<div class="mt-4 flex items-center text-on-surface text-sm font-medium">
+<span class="material-symbols-outlined text-sm mr-1 text-bitcoin-gold" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+                            +12.4% Probability
+                        </div>
+</div>
+<!-- KPI 2 -->
+<div class="p-card-padding bg-surface-container rounded-[24px] border border-border-dark group hover:border-bitcoin-gold/50 transition-all duration-300">
+<p class="text-on-surface-variant text-sm uppercase tracking-widest mb-4">Moon Alpha Index™</p>
+<div class="flex items-baseline space-x-2">
+<h3 class="font-kpi-value text-hero-title-mobile text-on-surface">0.842</h3>
+</div>
+<div class="mt-4 flex items-center text-on-surface text-sm font-medium">
+<span class="material-symbols-outlined text-sm mr-1" style="font-variation-settings: 'FILL' 1;">verified</span>
+                            High Correlation Confirmed
+                        </div>
+</div>
+<!-- KPI 3 -->
+<div class="p-card-padding bg-surface-container rounded-[24px] border border-border-dark group hover:border-bitcoin-gold/50 transition-all duration-300">
+<p class="text-on-surface-variant text-sm uppercase tracking-widest mb-4">Avg. Full Moon Return</p>
+<div class="flex items-baseline space-x-2">
+<h3 class="font-kpi-value text-hero-title-mobile text-on-surface">+3.21%</h3>
+</div>
+<div class="mt-4 flex items-center text-on-surface text-sm font-medium opacity-60">
+                            Based on 14 years of historical BTC data
+                        </div>
+</div>
+</div>
+</div>
+</section>
+<!-- Content Section: Methodology -->
+<section class="py-section-gap">
+<div class="max-w-container-max mx-auto px-gutter grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+<div class="space-y-8">
+<span class="text-bitcoin-gold font-bold uppercase tracking-widest text-sm">Our Philosophy</span>
+<h2 class="font-section-title text-hero-title-mobile md:text-section-title text-on-surface leading-tight">
+                        Data First. <br/>Pseudoscience Second.
+                    </h2>
+<p class="text-on-surface-variant text-body-base leading-loose max-w-md">
+                        We don't trade on folklore. We trade on variance. MoonBitcoin utilizes rigorous statistical backtesting and signal processing to determine if lunar cycles represent a legitimate exogenous variable in financial markets. Our models strip away the mysticism to reveal the raw numerical reality of the moon's influence on global liquidity.
+                    </p>
+<div class="grid grid-cols-2 gap-8 pt-4">
+<div class="space-y-2">
+<p class="font-bold text-on-surface">Statistical Rigor</p>
+<p class="text-sm text-on-surface-variant">p-values calculated against randomized shuffle tests.</p>
+</div>
+<div class="space-y-2">
+<p class="font-bold text-on-surface">Market Neutral</p>
+<p class="text-sm text-on-surface-variant">Signals designed for hedging, not just long-only strategies.</p>
+</div>
+</div>
+</div>
+<div class="relative group">
+<div class="absolute -inset-4 bg-bitcoin-gold/5 rounded-[32px] blur-2xl group-hover:bg-bitcoin-gold/10 transition-all duration-500"></div>
+<div class="relative bg-surface rounded-[24px] border border-border-dark p-8 md:p-12 aspect-square flex flex-col justify-center">
+<div class="space-y-12">
+<div class="flex items-start space-x-6">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center border border-border-dark">
+<span class="material-symbols-outlined text-bitcoin-gold">query_stats</span>
+</div>
+<div>
+<h4 class="text-xl font-bold mb-2">Quantifiable Anomalies</h4>
+<p class="text-on-surface-variant text-sm">Identifying recurrent 29.5-day price clusters with sub-millisecond precision.</p>
+</div>
+</div>
+<div class="flex items-start space-x-6">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center border border-border-dark">
+<span class="material-symbols-outlined text-bitcoin-gold">auto_graph</span>
+</div>
+<div>
+<h4 class="text-xl font-bold mb-2">Predictive Telemetry</h4>
+<p class="text-on-surface-variant text-sm">Real-time alerts for upcoming synodic phase transitions and expected volatility spikes.</p>
+</div>
+</div>
+<div class="flex items-start space-x-6">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center border border-border-dark">
+<span class="material-symbols-outlined text-bitcoin-gold">verified_user</span>
+</div>
+<div>
+<h4 class="text-xl font-bold mb-2">Verified Methodology</h4>
+<p class="text-on-surface-variant text-sm">Open-source calculation logic ensures transparency for institutional integration.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-20 max-w-container-max mx-auto px-gutter mb-section-gap">
+<div class="bg-gradient-to-r from-surface-container to-surface-container-low rounded-[32px] p-12 md:p-20 text-center border border-border-dark relative overflow-hidden">
+<div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-bitcoin-gold/10 via-transparent to-transparent opacity-50"></div>
+<div class="relative z-10 space-y-8">
+<h2 class="font-section-title text-hero-title-mobile md:text-section-title text-on-surface">Ready to look up?</h2>
+<p class="text-on-surface-variant text-lg max-w-2xl mx-auto">
+                        Join 24,000+ analysts using MoonBitcoin to synchronize their strategies with the celestial clock.
+                    </p>
+<div class="flex flex-col md:flex-row justify-center items-center gap-4">
+<button class="w-full md:w-auto bg-bitcoin-gold text-on-primary font-bold px-10 py-5 rounded-xl text-xl hover:scale-105 transition-transform">
+                            Start Tracking Now
+                        </button>
+<p class="text-on-surface-variant text-sm font-medium">No wallet connection required for basic tiers.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-section-gap bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-border-dark">
+<div class="flex flex-col md:flex-row justify-between items-center px-gutter max-w-container-max mx-auto space-y-8 md:space-y-0">
+<div class="flex flex-col items-center md:items-start space-y-4">
+<div class="font-hero-title-mobile text-section-title-mobile text-on-surface">
+                    MoonBitcoin
+                </div>
+<p class="text-on-surface-variant text-sm text-center md:text-left max-w-xs font-body-base">
+                    © 2024 MoonBitcoin Analytics. All rights reserved. Precise data for the lunar economy.
+                </p>
+</div>
+<div class="flex flex-wrap justify-center gap-x-8 gap-y-4">
+<a class="text-on-surface-variant hover:text-bitcoin-gold transition-colors font-body-base text-body-base" href="#">Documentation</a>
+<a class="text-on-surface-variant hover:text-bitcoin-gold transition-colors font-body-base text-body-base" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-bitcoin-gold transition-colors font-body-base text-body-base" href="#">Risk Disclosure</a>
+<a class="text-on-surface-variant hover:text-bitcoin-gold transition-colors font-body-base text-body-base" href="#">Terms of Service</a>
+</div>
+<div class="flex space-x-6">
+<a class="text-on-surface-variant hover:text-bitcoin-gold transition-colors" href="#">
+<span class="material-symbols-outlined">public</span>
+</a>
+<a class="text-on-surface-variant hover:text-bitcoin-gold transition-colors" href="#">
+<span class="material-symbols-outlined">analytics</span>
+</a>
+<a class="text-on-surface-variant hover:text-bitcoin-gold transition-colors" href="#">
+<span class="material-symbols-outlined">shield</span>
+</a>
+</div>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,26 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model DailyMarketData {
+  id               Int      @id @default(autoincrement())
+  date             DateTime @unique
+  priceUsd         Float?
+  marketCapUsd     Float?
+  volumeUsd        Float?
+  moonPhase        String?
+  moonIllumination Float?
+  dailyReturn      Float?
+  volatility       Float?
+  createdAt        DateTime @default(now())
+
+  @@map("daily_market_data")
+}
