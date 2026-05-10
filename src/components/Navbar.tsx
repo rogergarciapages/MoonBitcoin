@@ -24,8 +24,8 @@ export default function Navbar() {
             <Link href="/blog" className="text-sm font-bold text-muted-foreground hover:text-white transition-colors">
               Blog
             </Link>
-            <Link href="https://github.com" target="_blank" className="text-sm font-bold text-muted-foreground hover:text-white transition-colors">
-              GitHub
+            <Link href="https://github.com/rogergarciapages/MoonBitcoin" target="_blank" className="text-sm font-bold text-muted-foreground hover:text-white transition-colors">
+              Give project a Star on GitHub
             </Link>
           </div>
 

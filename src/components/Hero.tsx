@@ -1,7 +1,51 @@
-import { TrendingUp, ArrowRight, Zap } from "lucide-react";
+"use client";
+
+import { TrendingUp, ArrowRight, Zap, Target, ShieldCheck, AlertCircle } from "lucide-react";
 import Link from "next/link";
+import { getMoonData } from "@/lib/moon";
+import { useEffect, useState } from "react";
+import Image from "next/image";
 
 export default function Hero() {
+  const [moonData, setMoonData] = useState<{ moonPhase: string; moonIllumination: number } | null>(null);
+
+  useEffect(() => {
+    setMoonData(getMoonData(new Date()));
+  }, []);
+
+  const getCorrelationIndication = (phase: string) => {
+    if (phase.includes("Waxing") || phase === "New Moon") {
+      return { 
+        label: "Bullish Bias", 
+        subLabel: "Buy Accumulation", 
+        color: "text-green-400", 
+        bgColor: "bg-green-400/10",
+        borderColor: "border-green-400/20",
+        icon: <TrendingUp className="w-5 h-5 text-green-400" />
+      };
+    }
+    if (phase.includes("Waning") || phase === "Full Moon") {
+      return { 
+        label: "Volatility Alert", 
+        subLabel: "Sell/De-risk", 
+        color: "text-red-400", 
+        bgColor: "bg-red-400/10",
+        borderColor: "border-red-400/20",
+        icon: <AlertCircle className="w-5 h-5 text-red-400" />
+      };
+    }
+    return { 
+      label: "Neutral State", 
+      subLabel: "Consolidation", 
+      color: "text-bitcoin-gold", 
+      bgColor: "bg-bitcoin-gold/10",
+      borderColor: "border-bitcoin-gold/20",
+      icon: <Zap className="w-5 h-5 text-bitcoin-gold" />
+    };
+  };
+
+  const indication = moonData ? getCorrelationIndication(moonData.moonPhase) : null;
+
   return (
     <section className="relative pt-20 pb-32 overflow-hidden">
       {/* Background Glow */}
@@ -33,7 +77,7 @@ export default function Hero() {
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link 
-                href="/blog" 
+                href="/analytics" 
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/5 border border-white/10 text-white font-bold rounded-2xl hover:bg-white/10 transition-all text-lg"
               >
                 Read Methodology
@@ -58,43 +102,50 @@ export default function Hero() {
             </div>
           </div>
           
-          <div className="relative">
-            {/* Mock Chart Visualization */}
-            <div className="card-premium p-8 aspect-square lg:aspect-[4/3] flex flex-col justify-end relative overflow-hidden group">
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10" />
+          <div className="relative flex justify-center lg:justify-end">
+            <div className="relative flex flex-col items-center justify-center overflow-visible">
               
-              {/* Fake Chart Lines */}
-              <div className="absolute inset-x-8 top-20 bottom-32 flex items-end justify-between gap-1">
-                {[40, 45, 38, 52, 60, 58, 65, 75, 70, 85, 95, 88, 92, 100].map((h, i) => (
-                  <div 
-                    key={i} 
-                    className="w-full bg-bitcoin-gold/20 rounded-t-sm relative group-hover:bg-bitcoin-gold/30 transition-colors"
-                    style={{ height: `${h}%` }}
-                  >
-                    {i % 4 === 0 && (
-                      <div className="absolute -top-12 left-1/2 -translate-x-1/2 flex flex-col items-center">
-                        <div className="w-6 h-6 rounded-full bg-white/10 border border-white/20 flex items-center justify-center">
-                          <Moon className="w-3 h-3 text-white fill-white" />
-                        </div>
-                        <div className="w-px h-6 bg-white/20 mt-1" />
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-              
-              <div className="relative z-20">
-                <div className="flex items-center gap-2 mb-2">
-                  <TrendingUp className="w-5 h-5 text-bitcoin-gold" />
-                  <span className="text-sm font-bold text-bitcoin-gold uppercase tracking-wider">Correlation Alert</span>
+              {/* Moon Visual Container - Large and transparent background */}
+              <div className="relative w-80 h-80 md:w-[500px] md:h-[500px] mb-12">
+                {/* Glow effects */}
+                <div className="absolute inset-[-10%] rounded-full bg-bitcoin-gold/5 blur-[100px] pointer-events-none" />
+                <div className="absolute inset-[-5%] rounded-full bg-white/5 blur-[80px] pointer-events-none animate-pulse" />
+                
+                <div className="relative w-full h-full rounded-full overflow-hidden shadow-[0_0_150px_rgba(255,255,255,0.05)] border border-white/10 bg-black">
+                  <Image 
+                    src="/images/moon.jpg" 
+                    alt="Current Moon Phase" 
+                    fill 
+                    priority
+                    className="object-cover scale-105"
+                  />
+                  {/* Advanced Moon Shader */}
+                  <MoonShader illumination={moonData?.moonIllumination || 0} phase={moonData?.moonPhase || "New Moon"} />
                 </div>
-                <h3 className="text-2xl font-black text-white mb-2">Full Moon Volatility Peak</h3>
-                <p className="text-muted-foreground text-sm">Historical data shows a 12% increase in average volatility during full moon phases over the last 10 years.</p>
               </div>
-              
-              {/* Decorative Moon */}
-              <div className="absolute top-10 right-10 w-32 h-32 rounded-full bg-white/5 blur-3xl" />
-              <div className="absolute top-14 right-14 w-12 h-12 rounded-full bg-white/10 border border-white/20 shadow-[0_0_20px_rgba(255,255,255,0.1)]" />
+
+              {/* Data Overlay */}
+              {moonData && indication && (
+                <div className="text-center w-full relative z-20">
+                  <div className="flex flex-col items-center mb-8">
+                    <span className="text-xs font-bold text-muted-foreground uppercase tracking-[0.4em] mb-3">Current Data Point</span>
+                    <h3 className="text-5xl font-black text-white uppercase tracking-tight mb-3">{moonData.moonPhase}</h3>
+                    <div className="px-4 py-1.5 rounded-full bg-bitcoin-gold/10 border border-bitcoin-gold/20 text-bitcoin-gold font-bold text-xs uppercase tracking-widest">
+                      {moonData.moonIllumination.toFixed(1)}% Illumination
+                    </div>
+                  </div>
+                  
+                  <div className={`inline-flex items-center gap-5 px-10 py-5 rounded-2xl border ${indication.borderColor} ${indication.bgColor} backdrop-blur-3xl shadow-2xl`}>
+                    <div className="p-3 rounded-xl bg-black/40">
+                      {indication.icon}
+                    </div>
+                    <div className="text-left">
+                      <div className={`text-lg font-black uppercase tracking-widest ${indication.color}`}>{indication.label}</div>
+                      <div className="text-xs font-bold text-white/70 uppercase">{indication.subLabel}</div>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -103,18 +154,71 @@ export default function Hero() {
   );
 }
 
-function Moon({ className }: { className?: string }) {
+function MoonShader({ illumination, phase }: { illumination: number; phase: string }) {
+  // A truly curved moon shader using overlapping elements
+  const isWaxing = phase.includes("Waxing") || phase === "New Moon" || phase === "First Quarter";
+  const i = illumination / 100;
+  
   return (
-    <svg 
-      viewBox="0 0 24 24" 
-      fill="none" 
-      stroke="currentColor" 
-      strokeWidth="2" 
-      strokeLinecap="round" 
-      strokeLinejoin="round" 
-      className={className}
-    >
-      <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
-    </svg>
+    <div className="absolute inset-0 pointer-events-none select-none">
+      {/* 
+        The "visible" part should have 0% opacity (show moon image).
+        The "shaded" part should have 100% opacity (black).
+      */}
+      
+      {/* 1. Base Shadow layer - only for the very edge or deep craters if needed, 
+          but here we use it to represent the dark side. 
+          Actually, we just use the terminator gradient.
+      */}
+
+      {/* 2. The Terminator Shader */}
+      <div 
+        className="absolute inset-0 transition-all duration-1000 ease-in-out"
+        style={{
+          background: getRealisticTerminator(illumination, isWaxing),
+        }}
+      />
+
+      {/* 3. Rim Glow and Internal Shadow for 3D depth */}
+      <div className="absolute inset-0 shadow-[inset_0_0_100px_rgba(0,0,0,0.95)]" />
+    </div>
   );
+}
+
+function getRealisticTerminator(illumination: number, isWaxing: boolean) {
+  // We need a sharp transition (100% opaque black to 100% transparent).
+  const shadowColor = '#000000';
+  const transparent = 'transparent';
+  
+  const i = illumination / 100;
+  
+  if (illumination >= 99) return transparent; // Full Moon
+  if (illumination <= 1) return shadowColor; // New Moon
+
+  // Standard Quarters (50%)
+  if (illumination === 50) {
+    return isWaxing 
+      ? `linear-gradient(to right, ${shadowColor} 50%, ${transparent} 50%)` 
+      : `linear-gradient(to left, ${shadowColor} 50%, ${transparent} 50%)`;
+  }
+
+  // Crescent (< 50%)
+  // The shadow is a large ellipse that leaves a crescent sliver.
+  if (illumination < 50) {
+    const ellipseWidth = (1 - (i * 2)) * 100;
+    // We want the shadow to cover the most of the moon.
+    return isWaxing
+      ? `radial-gradient(ellipse ${ellipseWidth}% 110% at ${100 - (i * 100)}% 50%, ${transparent} 49.5%, ${shadowColor} 50.5%)`
+      : `radial-gradient(ellipse ${ellipseWidth}% 110% at ${i * 100}% 50%, ${transparent} 49.5%, ${shadowColor} 50.5%)`;
+  } 
+  
+  // Gibbous (> 50%)
+  // The shadow is a small ellipse covering the dark sliver.
+  else {
+    const ellipseWidth = ((i - 0.5) * 2) * 100;
+    // We want the shadow to be just a sliver.
+    return isWaxing
+      ? `radial-gradient(ellipse ${100 - ellipseWidth}% 110% at 0% 50%, ${shadowColor} 49.5%, ${transparent} 50.5%)`
+      : `radial-gradient(ellipse ${100 - ellipseWidth}% 110% at 100% 50%, ${shadowColor} 49.5%, ${transparent} 50.5%)`;
+  }
 }

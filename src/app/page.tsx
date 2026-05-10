@@ -1,8 +1,8 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
-import CorrelationGauge from "@/components/CorrelationGauge";
-import { TrendingUp, Activity, BarChart3, Info } from "lucide-react";
+import KpiGauge from "@/components/KpiGauge";
+import { TrendingUp, Activity, BarChart3, Info, Zap, Shield, Moon } from "lucide-react";
 
 export default function Home() {
   return (
@@ -58,7 +58,7 @@ export default function Home() {
               
               <div className="order-1 lg:order-2 flex justify-center">
                 <div className="w-full max-w-md p-10 card-premium relative group hover:border-bitcoin-gold/20 transition-all">
-                  <CorrelationGauge value={0.14} />
+                  <KpiGauge value={14} label="Correlation Index" />
                   <div className="absolute top-4 right-4">
                     <div className="flex items-center gap-2 px-2 py-1 rounded bg-bitcoin-gold/10 border border-bitcoin-gold/20">
                       <div className="w-2 h-2 rounded-full bg-bitcoin-gold animate-pulse" />
@@ -81,11 +81,11 @@ export default function Home() {
               </p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
               <Feature 
                 icon={<Info className="w-6 h-6 text-bitcoin-gold" />}
                 title="Intellectually Honest"
-                description="We don't sell signals or make financial claims. We present raw data and statistical correlations."
+                description="We don't sell signals or make financial claims. We present raw data and statistical correlations for research."
               />
               <Feature 
                 icon={<BarChart3 className="w-6 h-6 text-bitcoin-gold" />}
@@ -94,8 +94,23 @@ export default function Home() {
               />
               <Feature 
                 icon={<Activity className="w-6 h-6 text-bitcoin-gold" />}
+                title="Moon Alpha Index™"
+                description="Backtesting hypothetical lunar trading strategies against standard Buy & Hold performance."
+              />
+              <Feature 
+                icon={<Zap className="w-6 h-6 text-bitcoin-gold" />}
+                title="Volatility Dispersion"
+                description="Identifying if extreme market 'Black Swan' events cluster around specific lunar points."
+              />
+              <Feature 
+                icon={<Moon className="w-6 h-6 text-bitcoin-gold" />}
+                title="Liquidity Surges"
+                description="Analyzing the relationship between global trading volume and moon illumination levels."
+              />
+              <Feature 
+                icon={<Shield className="w-6 h-6 text-bitcoin-gold" />}
                 title="Modern Statistics"
-                description="Using standard deviation, volatility analysis, and return grouping to find patterns."
+                description="Using Pearson correlation, standard deviation, and volume heatmaps for thorough analysis."
               />
             </div>
           </div>
