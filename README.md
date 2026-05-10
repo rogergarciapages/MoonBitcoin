@@ -8,7 +8,7 @@
 > An exploratory data experiment investigating the potential correlations between Bitcoin market behavior and the lunar cycle.
 
 ---
-
+![alt text](image.png)
 ## ✨ Overview
 
 MoonBitcoin is a sophisticated analytical engine designed to visualize and backtest the "Lunar Hypothesis" in the Bitcoin market. By integrating high-fidelity lunar data with over 10 years of historical market price action, this platform provides a premium, interactive environment for data-driven exploration.
