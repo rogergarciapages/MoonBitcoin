@@ -8,8 +8,14 @@ import VolatilityBoxPlot from "@/components/VolatilityBoxPlot";
 import VolumeHeatmap from "@/components/VolumeHeatmap";
 import KpiGauge from "@/components/KpiGauge";
 import LocalRangeSelector from "@/components/LocalRangeSelector";
+import { Metadata } from "next";
 import { Moon, TrendingUp, Activity, BarChart3, Zap, Shield } from "lucide-react";
 import { Suspense } from "react";
+
+export const metadata: Metadata = {
+  title: "Advanced Market Analytics",
+  description: "Deep dive into Bitcoin volatility, alpha strategies, and lunar correlation heatmap metrics.",
+};
 
 interface PageProps {
   searchParams: Promise<{ 

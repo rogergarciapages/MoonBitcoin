@@ -117,6 +117,29 @@ export default function Home() {
         </section>
       </main>
       <Footer />
+      {/* Structured Data for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "MoonBitcoin",
+            "description": "Investigating potential correlations between Bitcoin market behavior and lunar cycles through data science.",
+            "applicationCategory": "FinanceApplication",
+            "operatingSystem": "All",
+            "author": {
+              "@type": "Person",
+              "name": "Roger Garcia"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            }
+          })
+        }}
+      />
     </>
   );
 }
